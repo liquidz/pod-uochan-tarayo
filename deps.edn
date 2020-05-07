@@ -1,0 +1,25 @@
+{
+ :paths ["src"]
+ :deps
+ {org.clojure/clojure {:mvn/version "1.10.1"}
+  nrepl/bencode {:mvn/version "1.1.0"}
+  toyokumo/tarayo {:mvn/version "1.0.0-SNAPSHOT"}}
+
+ :aliases
+ {:dev
+  {:extra-paths ["test"]
+   :extra-deps {lambdaisland/kaocha {:mvn/version "1.0.629"}}}
+
+  :test
+  {:main-opts ["-m" "kaocha.runner"]}
+
+  :outdated
+  {:extra-deps {antq {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "antq.core"]}
+
+  :uberjar
+  {:extra-deps {seancorfield/depstar {:mvn/version "RELEASE"}}
+   :main-opts ["-m" "hf.depstar.uberjar" "target/pod-uochan-tarayo.jar"
+               "-C" "-m" "pod-uochan-tarayo.core"]}
+  }
+}
